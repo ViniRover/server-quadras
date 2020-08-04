@@ -39,6 +39,7 @@ class CreateReservationService {
 
     const checkReservationExists = await this.reservationsRepository.findByDate(
       reservationDate,
+      field_id,
     );
 
     if (checkReservationExists) {
