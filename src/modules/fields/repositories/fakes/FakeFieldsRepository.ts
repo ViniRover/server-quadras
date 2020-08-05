@@ -10,15 +10,11 @@ class FakeFieldsRepository implements IFieldsRepository {
   public async createField({ name }: ICreateFieldDTO): Promise<Field> {
     const field = new Field();
 
-    Object.assign(field, { id: uuid() }, name);
+    Object.assign(field, { id: uuid(), name });
+
+    this.fields.push(field);
 
     return field;
-  }
-
-  public async findOneField(field_id: string): Promise<Field | undefined> {
-    const findField = this.fields.find(field => field.id === field_id);
-
-    return findField;
   }
 
   public async findAllField(): Promise<Field[] | undefined> {

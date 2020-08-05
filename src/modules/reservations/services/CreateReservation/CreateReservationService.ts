@@ -50,7 +50,7 @@ class CreateReservationService {
       name,
       user_id,
       field_id,
-      date,
+      date: reservationDate,
     });
 
     return reservation;

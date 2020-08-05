@@ -21,12 +21,6 @@ class FieldsRepository implements IFieldsRepository {
     return field;
   }
 
-  public async findOneField(field_id: string): Promise<Field | undefined> {
-    const field = await this.ormRepository.findOne(field_id);
-
-    return field;
-  }
-
   public async findAllField(): Promise<Field[] | undefined> {
     const fields = await this.ormRepository.find();
 
