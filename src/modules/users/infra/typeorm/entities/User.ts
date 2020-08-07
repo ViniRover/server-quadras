@@ -38,7 +38,7 @@ class User {
       return null;
     }
 
-    return `http://localhost:8000/files/${this.avatar}`;
+    return `${process.env.APP_API_URL}/files/${this.avatar}`;
   }
 }
 
