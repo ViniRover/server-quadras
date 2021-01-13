@@ -32,6 +32,14 @@ class TypesRepository implements ITypesRepository {
 
     return type;
   }
+
+  public async findById(type_id: string): Promise<Type | undefined> {
+    const type = await this.ormRepository.findOne({
+      where: { id: type_id },
+    });
+
+    return type;
+  }
 }
 
 export default TypesRepository;
