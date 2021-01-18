@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity('fields')
+@Entity('types')
 class Type {
   @PrimaryGeneratedColumn('uuid')
   id: string;

@@ -1,5 +1,5 @@
 import ICreateTypeDTO from '@modules/types/dtos/ICreateTypeDTO';
-import Type from '@modules/types/infra/typeorm/entities/Field';
+import Type from '@modules/types/infra/typeorm/entities/Type';
 import { uuid } from 'uuidv4';
 import ITypesRepository from '../ITypesRepository';
 

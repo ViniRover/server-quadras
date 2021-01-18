@@ -1,7 +1,7 @@
 import ICreateTypeDTO from '@modules/types/dtos/ICreateTypeDTO';
 import ITypesRepository from '@modules/types/repositories/ITypesRepository';
 import { getRepository, Repository } from 'typeorm';
-import Type from '../entities/Field';
+import Type from '../entities/Type';
 
 class TypesRepository implements ITypesRepository {
   private ormRepository: Repository<Type>;
