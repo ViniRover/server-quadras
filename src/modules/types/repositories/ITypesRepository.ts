@@ -1,5 +1,5 @@
 import ICreateTypeDTO from '../dtos/ICreateTypeDTO';
-import Type from '../infra/typeorm/entities/Field';
+import Type from '../infra/typeorm/entities/Type';
 
 export default interface ITypesRepository {
   findByName(name: string): Promise<Type | undefined>;

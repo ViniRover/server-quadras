@@ -9,6 +9,8 @@ import IFieldsRepository from '@modules/fields/repositories/IFieldsRepository';
 import FieldsRepository from '@modules/fields/infra/typeorm/repositories/FIeldsRepository';
 import IReservationsRepository from '@modules/reservations/repositories/IReservationsRepository';
 import ReservationsRepository from '@modules/reservations/infra/typeorm/repositories/ReservationsRepository';
+import ITypesRepository from '@modules/types/repositories/ITypesRepository';
+import TypesRepository from '@modules/types/infra/typeorm/repositories/TypesRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -23,4 +25,9 @@ container.registerSingleton<IFieldsRepository>(
 container.registerSingleton<IReservationsRepository>(
   'ReservationsRepository',
   ReservationsRepository,
+);
+
+container.registerSingleton<ITypesRepository>(
+  'TypesRepository',
+  TypesRepository,
 );
