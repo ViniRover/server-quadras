@@ -6,6 +6,7 @@ import AppError from '@shared/error/AppError';
 
 interface IResquest {
   name: string;
+  type_id: string;
 }
 
 @injectable()
@@ -15,7 +16,7 @@ class CreateFieldService {
     private fieldsRepository: IFieldsRepository,
   ) {}
 
-  public async execute({ name }: IResquest): Promise<Field> {
+  public async execute({ name, type_id }: IResquest): Promise<Field> {
     const checkFieldExist = await this.fieldsRepository.findByName(name);
 
     if (checkFieldExist) {
@@ -24,6 +25,7 @@ class CreateFieldService {
 
     const field = await this.fieldsRepository.createField({
       name,
+      type_id,
     });
 
     return field;

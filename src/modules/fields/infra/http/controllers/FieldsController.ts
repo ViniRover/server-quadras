@@ -6,23 +6,32 @@ import ShowFieldsService from '@modules/fields/services/ShowFields/ShowFieldsSer
 
 class FieldsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name } = request.body;
+    try {
+      const { name, type_id } = request.body;
 
-    const createField = container.resolve(CreateFieldService);
+      const createField = container.resolve(CreateFieldService);
 
-    const field = await createField.execute({
-      name,
-    });
+      const field = await createField.execute({
+        name,
+        type_id,
+      });
 
-    return response.json(field);
+      return response.json(field);
+    } catch (err) {
+      return response.status(400).json({ err: err.message });
+    }
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
-    const showFields = container.resolve(ShowFieldsService);
+    try {
+      const showFields = container.resolve(ShowFieldsService);
 
-    const fields = await showFields.execute();
+      const fields = await showFields.execute();
 
-    return response.json(fields);
+      return response.json(fields);
+    } catch (err) {
+      return response.status(400).json({ err: err.message });
+    }
   }
 }
 

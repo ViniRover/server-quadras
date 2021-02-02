@@ -35,6 +35,10 @@ class FakeTypesRepository implements ITypesRepository {
 
     return type;
   }
+
+  public async findAll(): Promise<Type[] | undefined> {
+    return this.types;
+  }
 }
 
 export default FakeTypesRepository;

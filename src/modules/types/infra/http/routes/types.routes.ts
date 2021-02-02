@@ -18,4 +18,6 @@ typesRouter.post(
   typesController.create,
 );
 
+typesRouter.get('/', ensureAuthentication, typesController.show);
+
 export default typesRouter;

@@ -12,6 +12,7 @@ fieldsRouter.post(
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
+      type_id: Joi.string().required(),
     },
   }),
   ensureAuthentication,

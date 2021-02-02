@@ -11,9 +11,10 @@ class FieldsRepository implements IFieldsRepository {
     this.ormRepository = getRepository(Field);
   }
 
-  public async createField({ name }: ICreateFieldDTO): Promise<Field> {
+  public async createField({ name, type_id }: ICreateFieldDTO): Promise<Field> {
     const field = this.ormRepository.create({
       name,
+      type_id,
     });
 
     await this.ormRepository.save(field);
