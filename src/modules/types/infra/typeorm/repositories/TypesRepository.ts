@@ -40,6 +40,12 @@ class TypesRepository implements ITypesRepository {
 
     return type;
   }
+
+  public async findAll(): Promise<Type[] | undefined> {
+    const types = await this.ormRepository.find();
+
+    return types;
+  }
 }
 
 export default TypesRepository;

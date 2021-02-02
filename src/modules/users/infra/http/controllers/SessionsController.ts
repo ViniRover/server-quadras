@@ -6,16 +6,20 @@ import AuthenticateUserService from '@modules/users/services/AuthenticateUser/Au
 
 class SessionsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { email, password } = request.body;
+    try {
+      const { email, password } = request.body;
 
-    const autheticateUser = container.resolve(AuthenticateUserService);
+      const autheticateUser = container.resolve(AuthenticateUserService);
 
-    const { user, token } = await autheticateUser.execute({
-      email,
-      password,
-    });
+      const { user, token } = await autheticateUser.execute({
+        email,
+        password,
+      });
 
-    return response.json({ user: classToClass(user), token });
+      return response.json({ user: classToClass(user), token });
+    } catch (err) {
+      return response.status(400).json({ err: err.message });
+    }
   }
 }
 

@@ -6,4 +6,5 @@ export default interface ITypesRepository {
   findById(type_id: string): Promise<Type | undefined>;
   create(data: ICreateTypeDTO): Promise<Type>;
   save(type: Type): Promise<Type>;
+  findAll(): Promise<Type[] | undefined>;
 }

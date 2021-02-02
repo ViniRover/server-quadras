@@ -14,6 +14,7 @@ describe('CreateField', () => {
   it('should be able to create a new field', async () => {
     const field = await createField.execute({
       name: 'field_name',
+      type_id: 'type_id',
     });
 
     expect(field).toHaveProperty('id');
@@ -23,11 +24,13 @@ describe('CreateField', () => {
   it('should not be able to create a field with the same name', async () => {
     await createField.execute({
       name: 'field_name',
+      type_id: 'type_id',
     });
 
     await expect(
       createField.execute({
         name: 'field_name',
+        type_id: 'type_id',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
