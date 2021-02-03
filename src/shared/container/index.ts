@@ -11,8 +11,6 @@ import IReservationsRepository from '@modules/reservations/repositories/IReserva
 import ReservationsRepository from '@modules/reservations/infra/typeorm/repositories/ReservationsRepository';
 import ITypesRepository from '@modules/types/repositories/ITypesRepository';
 import TypesRepository from '@modules/types/infra/typeorm/repositories/TypesRepository';
-import ILocationsRepository from '@modules/locations/repositories/ILocationsRepository';
-import LocationsRepository from '@modules/locations/infra/typeorm/repositories/LocationsRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -32,9 +30,4 @@ container.registerSingleton<IReservationsRepository>(
 container.registerSingleton<ITypesRepository>(
   'TypesRepository',
   TypesRepository,
-);
-
-container.registerSingleton<ILocationsRepository>(
-  'LocationsRepository',
-  LocationsRepository,
 );

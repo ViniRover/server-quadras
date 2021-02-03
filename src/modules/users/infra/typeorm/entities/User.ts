@@ -23,6 +23,9 @@ class User {
   cpf: string;
 
   @Column()
+  is_company: boolean;
+
+  @Column()
   @Exclude()
   password: string;
 
