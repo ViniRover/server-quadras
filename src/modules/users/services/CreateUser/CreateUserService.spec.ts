@@ -19,6 +19,7 @@ describe('CreateUser', () => {
       name: 'name',
       email: 'name@example.com',
       password: 'password',
+      cpf: 'cpf',
     });
 
     expect(user).toHaveProperty('id');
@@ -29,6 +30,7 @@ describe('CreateUser', () => {
       name: 'name',
       email: 'name@example.com',
       password: 'password',
+      cpf: 'cpf',
     });
 
     await expect(
@@ -36,6 +38,25 @@ describe('CreateUser', () => {
         name: 'name',
         email: 'name@example.com',
         password: 'password',
+        cpf: 'cpf2',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should not be able to create an user with the same CPF', async () => {
+    await createUser.execute({
+      name: 'name',
+      email: 'name2@example.com',
+      password: 'password',
+      cpf: 'cpf',
+    });
+
+    await expect(
+      createUser.execute({
+        name: 'name',
+        email: 'name@example.com',
+        password: 'password',
+        cpf: 'cpf',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

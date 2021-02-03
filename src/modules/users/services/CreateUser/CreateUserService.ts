@@ -28,10 +28,16 @@ class CreateUserService {
     password,
     cpf,
   }: IResquest): Promise<User> {
-    const checkUserExist = await this.usersRespository.findByEmail(email);
+    const checkUserEmail = await this.usersRespository.findByEmail(email);
 
-    if (checkUserExist) {
+    if (checkUserEmail) {
       throw new AppError('This e-mail is already used');
+    }
+
+    const checkUserCpf = await this.usersRespository.findByCpf(cpf);
+
+    if (checkUserCpf) {
+      throw new AppError('This CPF already exists');
     }
 
     const hashedPassword = await this.hashProvider.generateHash(password);

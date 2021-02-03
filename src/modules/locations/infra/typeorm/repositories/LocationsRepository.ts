@@ -1,9 +1,9 @@
 import ICreateLocationDTO from '@modules/locations/dtos/ICreateLocationDTO';
-import ILocationRepository from '@modules/locations/repositories/ILocationsRepository';
+import ILocationsRepository from '@modules/locations/repositories/ILocationsRepository';
 import { getRepository, Like, Repository } from 'typeorm';
 import Location from '../entities/Location';
 
-class LocationsRepository implements ILocationRepository {
+class LocationsRepository implements ILocationsRepository {
   private ormRepository: Repository<Location>;
 
   constructor() {
