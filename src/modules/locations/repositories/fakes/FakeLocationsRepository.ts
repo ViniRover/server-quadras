@@ -1,9 +1,9 @@
 import ICreateLocationDTO from '@modules/locations/dtos/ICreateLocationDTO';
 import Location from '@modules/locations/infra/typeorm/entities/Location';
 import { uuid } from 'uuidv4';
-import ILocationRepository from '../ILocationsRepository';
+import ILocationsRepository from '../ILocationsRepository';
 
-class FakeLocationsRepository implements ILocationRepository {
+class FakeLocationsRepository implements ILocationsRepository {
   private locations: Location[] = [];
 
   public async create(dataLocation: ICreateLocationDTO): Promise<Location> {
