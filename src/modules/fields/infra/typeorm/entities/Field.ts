@@ -1,4 +1,5 @@
 import Type from '@modules/types/infra/typeorm/entities/Type';
+import User from '@modules/users/infra/typeorm/entities/User';
 import {
   Entity,
   Column,
@@ -20,6 +21,9 @@ class Field {
   @Column()
   type_id: string;
 
+  @Column()
+  user_id: string;
+
   @CreateDateColumn()
   created_at: Date;
 
@@ -29,6 +33,10 @@ class Field {
   @ManyToOne(() => Type)
   @JoinColumn({ name: 'type_id' })
   type: Type;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 }
 
 export default Field;
