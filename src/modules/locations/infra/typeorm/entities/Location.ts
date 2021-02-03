@@ -22,10 +22,13 @@ class Location {
   address: string;
 
   @Column()
-  cpnj: string;
+  cnpj: string;
 
   @Column()
   phone: string;
+
+  @Column()
+  email: string;
 
   @CreateDateColumn()
   created_at: Date;
