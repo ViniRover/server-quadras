@@ -20,8 +20,11 @@ describe('UpdateUserAvatar', () => {
   it('should be able to update user avatar', async () => {
     const user = await fakeUsersRepository.create({
       name: 'name',
-      email: 'email@example.com',
+      email: 'name2@example.com',
       password: 'password',
+      phone: 'user_phone',
+      cpf: 'cpf',
+      is_company: false,
     });
 
     await updateUserAvatar.execute({
@@ -46,8 +49,11 @@ describe('UpdateUserAvatar', () => {
 
     const user = await fakeUsersRepository.create({
       name: 'name',
-      email: 'email@example.com',
+      email: 'name2@example.com',
       password: 'password',
+      phone: 'user_phone',
+      cpf: 'cpf',
+      is_company: false,
     });
 
     await updateUserAvatar.execute({

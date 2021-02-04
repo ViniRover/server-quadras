@@ -20,12 +20,15 @@ describe('AuthenticateUser', () => {
   it('should be able to authenticate an user', async () => {
     const user = await fakeUsersRepository.create({
       name: 'name',
-      email: 'email@example.com',
+      email: 'name2@example.com',
       password: 'password',
+      phone: 'user_phone',
+      cpf: 'cpf',
+      is_company: false,
     });
 
     const authenticatedUser = await authenticateUser.execute({
-      email: 'email@example.com',
+      email: 'name2@example.com',
       password: 'password',
     });
 
@@ -36,13 +39,16 @@ describe('AuthenticateUser', () => {
   it('should not be able to authenticate an user with the wrong password', async () => {
     await fakeUsersRepository.create({
       name: 'name',
-      email: 'email@example.com',
+      email: 'name2@example.com',
       password: 'password',
+      phone: 'user_phone',
+      cpf: 'cpf',
+      is_company: false,
     });
 
     await expect(
       authenticateUser.execute({
-        email: 'email@example.com',
+        email: 'name2@example.com',
         password: 'wrong_password',
       }),
     ).rejects.toBeInstanceOf(AppError);

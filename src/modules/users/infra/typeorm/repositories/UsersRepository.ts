@@ -16,12 +16,20 @@ class UsersRepository implements IUsersRepository {
     password,
     email,
     cpf,
+    cnpj,
+    phone,
+    address,
+    is_company,
   }: ICreateUserDTO): Promise<User> {
     const user = this.ormRepository.create({
       name,
       password,
       cpf,
       email,
+      address,
+      phone,
+      cnpj,
+      is_company,
     });
 
     await this.ormRepository.save(user);
@@ -50,6 +58,14 @@ class UsersRepository implements IUsersRepository {
   public async findByCpf(cpf: string): Promise<User | undefined> {
     const user = await this.ormRepository.findOne({
       where: { cpf },
+    });
+
+    return user;
+  }
+
+  public async findByCnpj(cnpj: string): Promise<User | undefined> {
+    const user = await this.ormRepository.findOne({
+      where: { cnpj },
     });
 
     return user;

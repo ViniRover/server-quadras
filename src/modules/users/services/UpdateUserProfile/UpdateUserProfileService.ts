@@ -9,6 +9,8 @@ interface IRequest {
   user_id: string;
   name: string;
   email: string;
+  phone: string;
+  address?: string;
   password?: string;
   old_password?: string;
 }
@@ -29,6 +31,8 @@ class UpdateUserProfileService {
     email,
     password,
     old_password,
+    phone,
+    address,
   }: IRequest): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
 
@@ -44,6 +48,11 @@ class UpdateUserProfileService {
 
     user.name = name;
     user.email = email;
+    user.phone = phone;
+
+    if (address) {
+      user.address = address;
+    }
 
     if (password && !old_password) {
       throw new AppError(

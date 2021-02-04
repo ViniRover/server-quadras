@@ -23,6 +23,15 @@ class User {
   cpf: string;
 
   @Column()
+  cnpj: string;
+
+  @Column()
+  phone: string;
+
+  @Column()
+  address: string;
+
+  @Column()
   is_company: boolean;
 
   @Column()
