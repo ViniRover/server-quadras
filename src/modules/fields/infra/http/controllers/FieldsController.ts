@@ -14,6 +14,7 @@ class FieldsController {
       const field = await createField.execute({
         name,
         type_id,
+        user_id: request.user.id,
       });
 
       return response.json(field);

@@ -42,6 +42,12 @@ class FakeUsersRepository implements IUsersRepository {
 
     return user;
   }
+
+  public async findByCnpj(cnpj: string): Promise<User | undefined> {
+    const user = this.users.find(findUser => findUser.cnpj === cnpj);
+
+    return user;
+  }
 }
 
 export default FakeUsersRepository;

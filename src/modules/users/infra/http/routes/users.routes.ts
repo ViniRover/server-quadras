@@ -18,8 +18,24 @@ usersRouter.post(
     [Segments.BODY]: {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
-      password: Joi.string().required(),
-      cpf: Joi.string().required(),
+      password: Joi.string().min(6).required(),
+      phone: Joi.string().required(),
+      is_company: Joi.boolean().required(),
+      cpf: Joi.alternatives().conditional('is_company', {
+        is: true,
+        then: Joi.any().forbidden(),
+        otherwise: Joi.string().max(11).required(),
+      }),
+      cnpj: Joi.alternatives().conditional('is_company', {
+        is: true,
+        then: Joi.string().max(14).required(),
+        otherwise: Joi.any().forbidden(),
+      }),
+      address: Joi.alternatives().conditional('is_company', {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.string(),
+      }),
     },
   }),
   usersController.create,
